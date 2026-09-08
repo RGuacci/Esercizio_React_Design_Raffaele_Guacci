@@ -11,8 +11,9 @@ function Details() {
           <div className="hover-3d shrink-0">
             <figure className="w-60 rounded-2xl">
               <img src={anime.images.jpg.large_image_url} alt={anime.title} />
-            </figure>
 
+            </figure>
+            {/* Questi div sono di daisy ui e sono necessari per l'animazione 3d dell'immagine*/}
             <div></div>
             <div></div>
             <div></div>
