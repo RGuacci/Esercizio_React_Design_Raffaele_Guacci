@@ -6,30 +6,42 @@ import Info from '../views/Info';
 import { getAnimes } from './loader';
 import { getSingleAnime } from './loader';
 import Details from '../views/Details';
+import Login from "../views/Login";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Layout,
     children: [
+
       { 
         index : true,
-        Component : Homepage       
+        Component : Homepage,
+        loader: getAnimes       
       },
+
       {
         path : 'register',
         Component : Register
       },
+
       {
         path : 'info',
         Component : Info,
         loader : getAnimes
       },
+
       {
         path : 'info/details/:id',
         Component : Details ,
         loader : getSingleAnime
+      },
+
+      {
+        path : 'login',
+        Component : Login
       }
+
     ],
   },
 ]);

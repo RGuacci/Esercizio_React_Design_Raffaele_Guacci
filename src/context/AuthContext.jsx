@@ -6,19 +6,20 @@ export const AuthContext = createContext();
 export default function AuthContextProvider ({ children }){
   const [ user , setUser ] = useState(null);
 
-  const createUser = (name,email)=>{
+  const createUser = (name,email,password)=>{
      setUser({
         name,
-        email
+        email,
+        password
      })
   }
 
-  const logout = () => {
-    setUser(null);
-  }
+  const login = (newUser) => setUser(newUser);
+
+  const logout = () => setUser(null);
 
   return (
-    <AuthContext.Provider value={{ user , createUser , logout }}>
+    <AuthContext.Provider value={{ user , createUser , login , logout  }}>
        { children }
     </AuthContext.Provider>
   )

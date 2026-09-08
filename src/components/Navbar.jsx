@@ -6,20 +6,18 @@ export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
 
   return (
-    <nav className="navbar bg-slate-900 shadow-sm fixed top-0 right-0 left-0 z-3">
+    <nav className="navbar bg-slate-900 text-white shadow-md">
       <div className="flex-none">
         <button className="btn btn-square btn-ghost">{/* menu */}</button>
       </div>
 
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">React Design</a>
+        <Link to="/" className="btn btn-white text-xl">React Design</Link>
       </div>
 
       {/* Links */}
-      <ul className="menu menu-horizontal px-1">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
+      <ul className="menu menu-horizontal px-1 text-white">
+       
 
         {user ? (
           <>
@@ -39,6 +37,10 @@ export default function Navbar() {
           <>
             <li>
               <Link to="register">Registrati</Link>
+            </li>
+
+            <li>
+              <Link to="login">Accedi</Link>
             </li>
           </>
         )}

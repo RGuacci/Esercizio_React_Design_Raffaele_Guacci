@@ -1,11 +1,10 @@
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../context/AuthContext";
 
-export default function Register() {
-  const { createUser } = useContext(AuthContext);
-
+export default function Login() {
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const {
@@ -14,8 +13,8 @@ export default function Register() {
     formState: { errors },
   } = useForm();
 
-  const handleData = (data) => {
-    createUser(data.name, data.email, data.password);
+  const handleLogin = (data) => {
+    login(data);
     navigate("/");
   };
 
@@ -23,30 +22,13 @@ export default function Register() {
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Registrati Ora!</h1>
+          <h1 className="text-5xl font-bold">Accedi</h1>
         </div>
 
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
-            <form onSubmit={handleSubmit(handleData)}>
+            <form onSubmit={handleSubmit(handleLogin)}>
               <fieldset className="fieldset">
-                <label className="label">Nome</label>
-                <input
-                  type="text"
-                  className="input"
-                  placeholder="Nome"
-                  {...register("name", {
-                    required: "Il nome è obbligatorio",
-                    maxLength: {
-                      value: 50,
-                      message: "Il nome non può superare i 50 caratteri",
-                    },
-                  })}
-                />
-                {errors.name && (
-                  <p className="text-red-500">{errors.name.message}</p>
-                )}
-
                 <label className="label">Email</label>
                 <input
                   type="email"
@@ -65,6 +47,8 @@ export default function Register() {
                 )}
 
                 <label className="label">Password</label>
+
+                <label className="label">Password</label>
                 <input
                   type="password"
                   className="input"
@@ -81,7 +65,9 @@ export default function Register() {
                   <p className="text-red-500">{errors.password.message}</p>
                 )}
 
-                <button className="btn btn-neutral mt-4">Registrati</button>
+                <button type="submit" className="btn btn-neutral mt-4">
+                  Login
+                </button>
               </fieldset>
             </form>
           </div>
